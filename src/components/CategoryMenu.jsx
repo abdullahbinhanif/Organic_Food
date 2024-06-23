@@ -25,7 +25,9 @@ const CategoryMenu = () => {
       <div className="my-5 flex gap-3 overflow-x-scroll scroll-smooth  lg:overflow-x-hidden">
         <button
           onClick={() => dispacth(setCategory("All"))}
-          className="px-3 py-2 bg-purple-500 font-bold rounded-lg hover:bg-purple-600 hover:text-white"
+          className={`px-3 py-2 bg-purple-600 font-bold rounded-lg hover:bg-purple-600 hover:text-white ${
+            selectedCategory === "All" && "bg-purple-500 text-white"
+          }`}
         >
           All
         </button>
@@ -34,7 +36,9 @@ const CategoryMenu = () => {
             <button
               onClick={() => dispacth(setCategory(category))}
               key={index}
-              className="px-3 py-2 bg-gray-200 font-bold rounded-lg hover:bg-purple-600 hover:text-white"
+              className={`px-3 py-2 bg-gray-200 font-bold rounded-lg hover:bg-purple-600 hover:text-white ${
+                selectedCategory === category && "bg-purple-500 text-white"
+              }`}
             >
               {category}
             </button>
