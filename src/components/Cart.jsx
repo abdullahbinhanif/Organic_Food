@@ -4,7 +4,9 @@ import { FiShoppingCart } from "react-icons/fi";
 
 import ItemCard from "./ItemCard";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
+  const navigate = useNavigate();
   const [activeCart, setActiveCart] = useState(false);
   const cartItem = useSelector((state) => state.cart.cart);
   const totalQty = cartItem.reduce((totalQty, item) => totalQty + item.qty, 0);
@@ -52,7 +54,10 @@ const Cart = () => {
             Total Amount :${totalPrice}
           </h3>
           <hr className="w-[90vw] lg:w-[18vw] my-2" />
-          <button className="bg-purple-500 font-bold px-3 text-white py-2 rounded-lg w-[90vw] lg:w-[18vw] mb-5">
+          <button
+            onClick={() => navigate("/succes")}
+            className="bg-purple-500 font-bold px-3 text-white py-2 rounded-lg w-[90vw] lg:w-[18vw] mb-5"
+          >
             Checkout
           </button>
         </div>
