@@ -1,6 +1,8 @@
 import React from "react";
-
+import { setSearch } from "../redux/slices/SearchSlice";
+import { useDispatch } from "react-redux";
 const Navbar = () => {
+  const dispatch = useDispatch();
   return (
     <nav className="flex flex-col lg:flex-row justify-between py-3 mx-6 mb-10">
       <div>
@@ -11,6 +13,7 @@ const Navbar = () => {
       </div>
       <div>
         <input
+          onChange={(e) => dispatch(setSearch(e.target.value))}
           type="text"
           name="search"
           placeholder="Search here"

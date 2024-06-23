@@ -5,7 +5,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import ItemCard from "./ItemCard";
 import { useSelector } from "react-redux";
 const Cart = () => {
-  const [activeCart, setActiveCart] = useState(true);
+  const [activeCart, setActiveCart] = useState(false);
   const cartItem = useSelector((state) => state.cart.cart);
   const totalQty = cartItem.reduce((totalQty, item) => totalQty + item.qty, 0);
   const totalPrice = cartItem.reduce(
