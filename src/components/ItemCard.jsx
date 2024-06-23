@@ -2,7 +2,11 @@ import React from "react";
 import { FiPlus } from "react-icons/fi";
 import { FiMinus } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
-import { removeFromCart } from "../redux/slices/CartSlice";
+import {
+  removeFromCart,
+  incrementQty,
+  decrementQty,
+} from "../redux/slices/CartSlice";
 import { useDispatch } from "react-redux";
 const ItemCard = ({ id, name, price, img, qty }) => {
   const dispatch = useDispatch();
@@ -18,9 +22,19 @@ const ItemCard = ({ id, name, price, img, qty }) => {
         <div className="flex justify-between">
           <span className="text-purple-500 font-bold">${price}</span>
           <div className=" flex justify-center items-center gap-2 absolute right-7">
-            <FiPlus className="border-2 border-gray-600 text-gray-600 hover:text-white hover:bg-purple-500 hover:border-none rounded-md p-1 text-xl transition-all ease-linear cursor-pointer" />
+            <FiMinus
+              onClick={() =>
+                qty > 1 ? dispatch(decrementQty({ id })) : (qty = 0)
+              }
+              className="border-2 border-gray-600 text-gray-600 hover:text-white hover:bg-purple-500 hover:border-none rounded-md p-1 text-xl transition-all ease-linear cursor-pointer"
+            />
             <span>{qty}</span>
-            <FiMinus className="border-2 border-gray-600 text-gray-600 hover:text-white hover:bg-purple-500 hover:border-none rounded-md p-1 text-xl transition-all ease-linear cursor-pointer" />
+            <FiPlus
+              onClick={() =>
+                qty >= 1 ? dispatch(incrementQty({ id })) : (qty = 0)
+              }
+              className="border-2 border-gray-600 text-gray-600 hover:text-white hover:bg-purple-500 hover:border-none rounded-md p-1 text-xl transition-all ease-linear cursor-pointer"
+            />
           </div>
         </div>
       </div>
